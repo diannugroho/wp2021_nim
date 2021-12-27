@@ -1,7 +1,19 @@
 <?php
 
 require 'funtions.php';
-$camaba = query("SELECT * FROM calon_mhs");
+// $camaba = query("SELECT * FROM calon_mhs");
+
+// tombol tambah sudah di tekan atau belum
+if (isset($_POST['tambah'])) {;
+  if (tambah($_POST) > 0) {
+    echo " <script>
+    alert ('data berhasil di tambah');
+    document.location.href = 'praktik1.php';
+    </script>";
+  } else {
+    echo "data gagal ditambahkan!";
+  };
+}
 ?>
 
 
@@ -72,31 +84,45 @@ $camaba = query("SELECT * FROM calon_mhs");
     </div>
     <div class="col-md-10 p-5 pt-5">
       <!-- konten -->
-      <h3><i class="fas fa-users"></i> Daftar Calon Mahasiswa</h3>
+      <h3><i class="fas fa-users"></i> Tambah Calon Mahasiswa baru</h3>
       <hr>
 
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">No</th>
-            <th scope="col">Nama Lengkap</th>
-            <th scope="col">Foto</th>
-            <th scope="col">Opsi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php $no = 1; ?>
-          <?php foreach ($camaba as $m) : ?>
-            <tr>
-              <th scope="row"><?php echo $no; ?></th>
-              <td><?php echo $m['nama']; ?></td>
-              <td><img src="image/foto1.png" width="100px"></td>
-              <td><a href="detail.php?id=<?= $m['id']; ?>"><i class="fas fa-edit"> detail</i></a></td>
-            </tr>
-            <?php $no++ ?>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
+      <form action="" method="POST">
+        <div class="form-group">
+          <label for="nama">nama</label>
+          <input type="text" class="form-control" id="nama" placeholder="Enter nama lengkap" name="nama" autofocus required>
+        </div>
+        <div class="form-group">
+          <label for="alamat">alamat</label>
+          <input type="text" class="form-control" id="alamat" placeholder="Enter alamat lengkap" name="alamat" required>
+        </div>
+        <div class="form-group">
+          <label for="jenis_kelamin">Jenis Kelamin</label>
+          <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
+            <option value="Laki-Laki">Laki-Laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="agama">agama</label>
+          <select class="form-control" id="agama" name="agama" required>
+            <option value="Islam">Islam</option>
+            <option value="Kristen">Kristen</option>
+            <option value="Protestan">Protestan</option>
+            <option value="Hindu">Hindu</option>
+            <option value="Budha">Budha</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sekolah_asal">Sekolah Asal</label>
+          <input type="text" class="form-control" id="sekolah_asal" placeholder="sekolah asal" name="sekolah_asal" required>
+        </div>
+        <div class="form-group">
+          <label for="foto_maba"> file input</label>
+          <input type="file" class="form-control-file" id="foto_maba">
+        </div>
+        <button type="submit" class="btn btn-primary" name="tambah">Submit</button>
+      </form>
     </div>
   </div>
 

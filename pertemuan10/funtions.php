@@ -21,3 +21,24 @@ function query($query)
   }
   return $rows;
 }
+
+function tambah($data)
+{
+  $conn = koneksi();
+
+  $nama = htmlspecialchars($data['nama']);
+  $alamat = htmlspecialchars($data['alamat']);
+  $jenis_kelamin = htmlspecialchars($data['jenis_kelamin']);
+  $agama = htmlspecialchars($data['agama']);
+  $sekolah_asal = htmlspecialchars($data['sekolah_asal']);
+  $foto_maba = htmlspecialchars($data['foto_maba']);
+
+  $query = "INSERT INTO 
+  calon_mhs
+  VALUES 
+  (null, '$nama','$alamat','$jenis_kelamin','$agama','$sekolah_asal','$foto_maba');
+  ";
+  mysqli_query($conn, $query);
+  echo mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}

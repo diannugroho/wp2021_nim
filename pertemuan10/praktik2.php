@@ -52,7 +52,7 @@ $camaba = query("SELECT * FROM calon_mhs");
           <hr class="bg-dark">
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="praktik1.php"><i class="fas fa-users"></i> calon Mahasiswa</a>
+          <a class="nav-link text-white" href="#"><i class="fas fa-users"></i> calon Mahasiswa</a>
           <hr>
         </li>
         <li class="nav-item">
@@ -72,31 +72,45 @@ $camaba = query("SELECT * FROM calon_mhs");
     </div>
     <div class="col-md-10 p-5 pt-5">
       <!-- konten -->
-      <h3><i class="fas fa-users"></i> Daftar Calon Mahasiswa</h3>
+      <h3><i class="fas fa-users"></i> Tambah Calon Mahasiswa baru</h3>
       <hr>
 
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">No</th>
-            <th scope="col">Nama Lengkap</th>
-            <th scope="col">Foto</th>
-            <th scope="col">Opsi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php $no = 1; ?>
-          <?php foreach ($camaba as $m) : ?>
-            <tr>
-              <th scope="row"><?php echo $no; ?></th>
-              <td><?php echo $m['nama']; ?></td>
-              <td><img src="image/foto1.png" width="100px"></td>
-              <td><a href="detail.php?id=<?= $m['id']; ?>"><i class="fas fa-edit"> detail</i></a></td>
-            </tr>
-            <?php $no++ ?>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
+      <form>
+        <div class="form-group">
+          <label for="nama">nama</label>
+          <input type="text" class="form-control" id="nama" placeholder="Enter nama lengkap">
+        </div>
+        <div class="form-group">
+          <label for="alamat">alamat</label>
+          <input type="text" class="form-control" id="alamat" placeholder="Enter alamat lengkap">
+        </div>
+        <div class="form-group">
+          <label for="jenis_kelamin">Jenis Kelamin</label>
+          <select class="form-control" id="jenis_kelamin">
+            <option>Laki-Laki</option>
+            <option>Perempuan</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="agama">agama</label>
+          <select class="form-control" id="agama">
+            <option>Islam</option>
+            <option>Kristen</option>
+            <option>Protestan</option>
+            <option>Hindu</option>
+            <option>Budha</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sekolah_asal">Sekolah Asal</label>
+          <input type="text" class="form-control" id="sekolah_asal" placeholder="sekolah asal">
+        </div>
+        <div class="form-group">
+          <label for="foto_maba"> file input</label>
+          <input type="file" class="form-control-file" id="foto_maba">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
   </div>
 
